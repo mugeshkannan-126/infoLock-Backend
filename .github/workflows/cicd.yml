@@ -28,3 +28,9 @@ jobs:
       - name: Run Spring Boot app (with log capture)
         run: |
           java -jar target/*.jar || true
+          
+      - name: Build Docker image
+        run: docker build -t spring-boot-app .
+
+      - name: Run Docker container
+        run: docker run -d -p 8080:8080 spring-boot-app
